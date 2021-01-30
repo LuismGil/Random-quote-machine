@@ -1,0 +1,30 @@
+body {
+  background-color: white;
+}
+
+#quote-box {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
+  margin: 50% auto;
+  box-sizing: border-box;
+  width: 45%;
+  border: solid #5b6dcd 1px;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+i {
+  font-size: 35px;
+}
+
+.icon {
+}
+
+#new-quote {
+  font-size: 15px;
+  padding: 3px;
+  margin-bottom: 14px;
+}

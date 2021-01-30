@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/styles.scss';
+import './index.css';
 //import App from './App';
 
 const quotes = [
@@ -53,12 +53,26 @@ const quotes = [
   },
 ];
 
+const colors = [
+  '#011627',
+  '#f3C677',
+  '#2EC4B6',
+  '#E71D36',
+  '#5C80BC',
+  '#CF1259',
+  '#8B1E3F',
+  '#DB4C4O',
+  '#DDDBF1',
+];
+
 class QuoteBox extends React.Component {
   constructor(props) {
     super(props);
+    // No llames this.setState() aquí!
     this.state = {
       quote: quotes[0].quote,
       author: quotes[0].author,
+      color: colors[0],
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -66,10 +80,14 @@ class QuoteBox extends React.Component {
   handleClick = () => {
     let randomQuote = Math.floor(Math.random() * quotes.length);
     let newQuote = quotes[randomQuote];
+    let randomColor = Math.floor(Math.random() * colors.length);
+    let newColor = colors[randomColor];
 
+    console.log('click aqui funciona?');
     this.setState({
       quote: newQuote.quote,
       author: newQuote.author,
+      color: newColor,
     });
   };
 
@@ -79,23 +97,18 @@ class QuoteBox extends React.Component {
         <h1>Random Quote Machine</h1>
         <div className="quote-card">
           <NewQuote quote={this.state} />
+          {/* handlerClick={this.handleClick} quote={this.state} */}
 
-          <div className="quote-buttons">
-            <div className="icons-container">
-              <a
-                id="tweet-quote"
-                href="twitter.com/intent/tweet"
-                target="_blank"
-              >
-                <i className="fab fa-twitter-square icon icons" />
-              </a>
-              <a href="https://www.tumblr.com/" role="button" target="_blank">
-                <i className="fab fa-tumblr-square icon icons" />
-              </a>
-              <a href="https://www.reddit.com/" target="_blank">
-                <i className="fab fa-reddit-square icon icons" />
-              </a>
-            </div>
+          <div>
+            <a id="tweet-quote" href="#">
+              <i className="fab fa-twitter-square icon" />
+            </a>
+            <a href="#" role="button">
+              <i className="fab fa-tumblr-square icon" />
+            </a>
+            <a href="#">
+              <i className="fab fa-reddit-square icon" />
+            </a>
             <button
               id="new-quote"
               type="submit"
@@ -113,16 +126,14 @@ class QuoteBox extends React.Component {
 
 const NewQuote = props => {
   const { quote } = props;
-  const { quote: quoteText, author } = quote;
 
   return (
-    <div>
-      <p id="text">
-        <i className="fas fa-quote-left quote-icon" />
-        {quoteText}
-        <i className="fas fa-quote-right quote-icon" />
+    <div style={{ color: quote.color }}>
+      <p>
+        <i class="fas fa-quote-left"></i>
+        {quote.quote}
       </p>
-      <p id="author"> {author} </p>
+      <p id="author">{quote.author} </p>
     </div>
   );
 };

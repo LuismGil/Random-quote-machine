@@ -5,3 +5,5 @@ This is another of my FreeCodeCamp projects "Random Quote Machine". Its function
 I didn't use any quote API, just declare a variable with random quotes.
 
 I used external fonts like Bootstrap for some styles and Font Awesome for the icons.
+
+If you want you can see the app in the following [link](https://luismgil.github.io/Random-quote-machine/).
